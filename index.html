@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>good night, my princess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body {
+    height:100%;
+    overflow-x:hidden;
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(160deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    cursor:none;
+  }
+  body {
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:30px 16px;
+  }
+
+  /* Stars */
+  #stars {
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+  }
+  .star {
+    position:absolute;
+    background:#fff;
+    border-radius:50%;
+    animation:twinkle linear infinite;
+  }
+  @keyframes twinkle {
+    0%,100% { opacity:.15; transform:scale(.8); }
+    50% { opacity:1; transform:scale(1.2); }
+  }
+
+  .shooting-star {
+    position:fixed;
+    top:0; left:0;
+    width:2px; height:2px;
+    background:linear-gradient(-45deg, rgba(255,255,255,1), rgba(255,255,255,0));
+    border-radius:50%;
+    filter: drop-shadow(0 0 6px #fff);
+    animation: shoot 6s linear infinite;
+    opacity:0;
+    z-index:1;
+  }
+  .shooting-star::before {
+    content:'';
+    position:absolute;
+    top:50%; left:50%;
+    width:120px; height:1px;
+    background:linear-gradient(-45deg, rgba(255,255,255,.9), transparent);
+    transform:translate(-100%,-50%);
+  }
+  .shooting-star.s2 { animation-delay:3s; top:10%; }
+  @keyframes shoot {
+    0% { transform: translate(0,0); opacity:0; }
+    2% { opacity:1; }
+    15% { transform: translate(-420px, 420px); opacity:0; }
+    100% { transform: translate(-420px, 420px); opacity:0; }
+  }
+
+  /* Moon */
+  .moon {
+    position:fixed;
+    top:6%; right:8%;
+    width:120px; height:120px;
+    background: radial-gradient(circle at 35% 35%, #fffef2, #fdf6e3 60%, #f5e7b8 100%);
+    border-radius:50%;
+    box-shadow:
+      0 0 60px 20px rgba(255,250,220,.5),
+      0 0 140px 60px rgba(255,240,200,.25);
+    filter: blur(0.3px);
+    z-index:0;
+    animation: moonGlow 6s ease-in-out infinite;
+  }
+  @keyframes moonGlow {
+    0%,100% { box-shadow:0 0 60px 20px rgba(255,250,220,.5), 0 0 140px 60px rgba(255,240,200,.25); }
+    50% { box-shadow:0 0 80px 30px rgba(255,250,220,.65), 0 0 170px 80px rgba(255,240,200,.35); }
+  }
+
+  /* Card */
+  .card {
+    position:relative;
+    z-index:2;
+    max-width:560px;
+    width:100%;
+    padding:48px 36px 36px;
+    border-radius:28px;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border:1px solid rgba(255,255,255,0.18);
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.35),
+      0 0 60px rgba(255,182,213,0.25),
+      inset 0 0 40px rgba(255,255,255,0.03);
+    text-align:center;
+    color:#f5f0ff;
+    animation: floatCard 6s ease-in-out infinite;
+  }
+  @keyframes floatCard {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .crown {
+    font-size:28px;
+    margin-bottom:6px;
+    filter: drop-shadow(0 0 8px rgba(255,215,180,.6));
+  }
+
+  h1 {
+    font-family:'Great Vibes', cursive;
+    font-size:52px;
+    font-weight:400;
+    line-height:1.1;
+    background: linear-gradient(90deg, #ffd6e8, #ffffff, #d9c2ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow: 0 0 30px rgba(255,182,213,.35);
+    margin-bottom:24px;
+  }
+
+  .typewriter {
+    font-size:15px;
+    line-height:1.9;
+    color:#efe8ff;
+    font-weight:300;
+    white-space:pre-wrap;
+    min-height:270px;
+    text-align:left;
+    letter-spacing:0.2px;
+  }
+  .typewriter .signature {
+    display:block;
+    margin-top:6px;
+    font-style:italic;
+    color:#ffd6e8;
+  }
+  .cursor-blink {
+    display:inline-block;
+    width:2px;
+    background:#ffd6e8;
+    margin-left:2px;
+    animation: blink 0.8s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity:0; } }
+
+  .btn {
+    margin-top:30px;
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,0.3);
+    background: linear-gradient(135deg, rgba(255,182,213,0.25), rgba(216,180,255,0.25));
+    color:#fff;
+    font-family:'Poppins', sans-serif;
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:.3px;
+    cursor:none;
+    transition: transform .3s ease, box-shadow .3s ease, opacity .3s ease;
+    box-shadow: 0 0 25px rgba(255,182,213,0.3);
+    opacity:0;
+  }
+  .btn.show {
+    opacity:1;
+    animation: pulseBtn 2.4s ease-in-out infinite;
+  }
+  .btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 40px rgba(255,182,213,0.55);
+  }
+  @keyframes pulseBtn {
+    0%,100% { box-shadow: 0 0 20px rgba(255,182,213,0.3); }
+    50% { box-shadow: 0 0 40px rgba(255,182,213,0.55); }
+  }
+
+  .love-text {
+    margin-top:22px;
+    font-family:'Great Vibes', cursive;
+    font-size:30px;
+    color:#ffd6e8;
+    text-shadow: 0 0 20px rgba(255,182,213,.6);
+    opacity:0;
+    transform: translateY(10px);
+    transition: all .8s ease;
+  }
+  .love-text.show { opacity:1; transform:translateY(0); }
+
+  footer {
+    position:relative;
+    z-index:2;
+    margin-top:22px;
+    text-align:center;
+    color:rgba(255,255,255,0.55);
+    font-size:12px;
+    letter-spacing:.4px;
+    font-weight:300;
+  }
+
+  .wrap {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+  }
+
+  /* falling hearts */
+  .falling-heart {
+    position:fixed;
+    top:-40px;
+    font-size:20px;
+    z-index:5;
+    pointer-events:none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+    filter: drop-shadow(0 0 6px rgba(255,150,190,.8));
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); opacity:0.2; }
+  }
+
+  /* cursor glow + trailing hearts */
+  #cursor-glow {
+    position:fixed;
+    width:26px; height:26px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(255,170,210,0.9), rgba(255,170,210,0) 70%);
+    pointer-events:none;
+    z-index:9999;
+    transform: translate(-50%,-50%);
+    transition: opacity .2s ease;
+  }
+  .trail-heart {
+    position:fixed;
+    pointer-events:none;
+    z-index:9998;
+    font-size:12px;
+    color:#ffb6d9;
+    animation: trailFade 1s ease-out forwards;
+  }
+  @keyframes trailFade {
+    to { opacity:0; transform: translateY(-20px) scale(0.5); }
+  }
+
+  @media (max-width:480px) {
+    h1 { font-size:38px; }
+    .card { padding:36px 22px 28px; border-radius:22px; }
+    .typewriter { font-size:13.5px; min-height:300px; }
+    .moon { width:70px; height:70px; top:4%; right:6%; }
+    cursor:none;
+  }
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star s2"></div>
+<div class="moon"></div>
+<div id="cursor-glow"></div>
+
+<div class="wrap">
+  <div class="card">
+    <div class="crown">👑</div>
+    <h1>good night, my princess</h1>
+    <div class="typewriter" id="typewriter"></div>
+    <button class="btn" id="sleepBtn">tidur yang nyenyak ya princess ku 🤍</button>
+    <div class="love-text" id="loveText">I Love You More, My Princess</div>
+  </div>
+  <footer>made with all my love for my princess 👑 14 Jan 2026</footer>
+</div>
+
+<script>
+// ===== Stars =====
+const starsContainer = document.getElementById('stars');
+const starCount = 150;
+for (let i=0; i<starCount; i++){
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random()*2 + 1;
+  s.style.width = size+'px';
+  s.style.height = size+'px';
+  s.style.top = Math.random()*100+'vh';
+  s.style.left = Math.random()*100+'vw';
+  s.style.animationDuration = (Math.random()*3+2)+'s';
+  s.style.animationDelay = (Math.random()*5)+'s';
+  starsContainer.appendChild(s);
+}
+
+// ===== Typewriter =====
+const text = `untuk princess ku yang paling cantik,
+hari ini kamu udah hebat banget, aku tau.
+makasih ya udah bertahan sejauh ini.
+sekarang waktunya kamu istirahat,
+biarin semua capeknya aku yang jagain malam ini.
+pejamkan mata indahmu, mimpi yang indah ya sayang.
+aku sayang kamu, lebih dari kata-kata bisa jelasin.`;
+const signature = "- dari pangeranmu yang selalu kangen kamu";
+
+const tw = document.getElementById('typewriter');
+const btn = document.getElementById('sleepBtn');
+let i = 0;
+const cursorSpan = document.createElement('span');
+cursorSpan.className = 'cursor-blink';
+cursorSpan.textContent = '\u00A0';
+
+function typeChar(){
+  if (i < text.length){
+    tw.textContent = text.substring(0, i+1);
+    tw.appendChild(cursorSpan);
+    i++;
+    setTimeout(typeChar, 28);
+  } else {
+    tw.removeChild(cursorSpan);
+    const sig = document.createElement('span');
+    sig.className = 'signature';
+    sig.textContent = signature;
+    tw.appendChild(sig);
+    setTimeout(()=> btn.classList.add('show'), 300);
+  }
+}
+typeChar();
+
+// ===== Button click: hearts rain + love text =====
+btn.addEventListener('click', () => {
+  for (let h=0; h<100; h++){
+    setTimeout(() => spawnFallingHeart(), h*20);
+  }
+  document.getElementById('loveText').classList.add('show');
+});
+
+function spawnFallingHeart(){
+  const heart = document.createElement('div');
+  heart.className = 'falling-heart';
+  const hearts = ['💗','💖','💕','💓','🤍','💞'];
+  heart.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+  heart.style.left = Math.random()*100+'vw';
+  const duration = Math.random()*3 + 3;
+  heart.style.animationDuration = duration+'s';
+  heart.style.fontSize = (Math.random()*14+14)+'px';
+  document.body.appendChild(heart);
+  setTimeout(()=> heart.remove(), duration*1000 + 200);
+}
+
+// ===== Cursor glow + trailing hearts =====
+const glow = document.getElementById('cursor-glow');
+let lastTrail = 0;
+window.addEventListener('mousemove', (e) => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+
+  const now = Date.now();
+  if (now - lastTrail > 90){
+    lastTrail = now;
+    const th = document.createElement('div');
+    th.className = 'trail-heart';
+    th.textContent = '♡';
+    th.style.left = (e.clientX + (Math.random()*10-5)) + 'px';
+    th.style.top = (e.clientY + (Math.random()*10-5)) + 'px';
+    document.body.appendChild(th);
+    setTimeout(()=> th.remove(), 1000);
+  }
+});
+
+// hide glow on touch devices fallback (still allow tap)
+window.addEventListener('touchstart', (e) => {
+  const t = e.touches[0];
+  glow.style.left = t.clientX + 'px';
+  glow.style.top = t.clientY + 'px';
+});
+</script>
+
+</body>
+</html>
